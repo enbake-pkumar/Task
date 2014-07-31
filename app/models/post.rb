@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
-  
+    validates :permalink, :uniqueness => true 	
+    
   def self.luhnother(ccNumber)
 	  ccNumber = ccNumber.gsub(/D/,'').split(//).collect { |digit| digit.to_i }
 	  parity = ccNumber.length % 2

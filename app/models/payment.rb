@@ -1,5 +1,5 @@
 class Payment < ActiveRecord::Base
-  attr_accessible  :line_item_id, :service_id
+  validates :line_item_id, :uniqueness => true 
 
   belongs_to :service
   
