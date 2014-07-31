@@ -1,4 +1,3 @@
 json.array!(@posts) do |post|
-  json.extract! post, :id, :title,:permalink
-  json.url post_url(post, format: :json)
+  json.extract! post, :id, :title, :permalink
 end
