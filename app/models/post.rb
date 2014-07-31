@@ -1,5 +1,12 @@
 class Post < ActiveRecord::Base
-    validates :permalink, :uniqueness => true 	
+  validates :permalink, :presence => {:message => 'URL cannot be blank.'}, :format => {:with => /\A[www]+[A-Za-z0-9._%+-]+\.[A-Za-z]+\z/, :message => 'INCORRECT FORMAT!'}
+  # validates :permalink,  :url => true	 
+  # validates_format_of :permalink, :with => URI::regexp(%w(http https))
+# validates :url, :presence => true, :url => true
+  # before_create do
+  #    binding.pry
+  #   self.permalink = 'www.' + "#{self.permalink}" + '.com' 
+  # end
     
   def self.luhnother(ccNumber)
 	  ccNumber = ccNumber.gsub(/D/,'').split(//).collect { |digit| digit.to_i }
